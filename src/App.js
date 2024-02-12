@@ -1,5 +1,14 @@
 import React from 'react';
-import { Home, Navbar } from './Components';
+import {
+  Home,
+  Navbar,
+  DashboardPreview,
+  Distribution,
+  Analytics,
+  Feature,
+  Footer,
+  ScrollToTop,
+} from './Components';
 import './app.scss';
 
 const App = () => {
@@ -7,6 +16,12 @@ const App = () => {
     <div className="app">
       <Navbar />
       <Home />
+      <DashboardPreview />
+      <Analytics />
+      <Feature />
+      <Distribution />
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };

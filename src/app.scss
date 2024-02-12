@@ -7,3 +7,30 @@
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+.app__scroll__to__top {
+  background: $elementary-color;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  color: $neutral;
+
+  &.active__arrow {
+    display: none;
+    transition: $trans;
+  }
+
+  a {
+    height: 100%;
+    width: 100%;
+
+    @include flexCenter;
+  }
+}

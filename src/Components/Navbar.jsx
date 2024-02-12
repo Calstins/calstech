@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className={bgColor ? 'app__navbar active' : 'app__navbar'}>
       <div className="nav__logo">
-        <p>CALSTECH</p>
+        <p>D'Task</p>
       </div>
       <ul className="nav__routes">
         {routes.map((route, index) => (
@@ -31,7 +31,7 @@ const Navbar = () => {
             backgroundColor: bgColor ? 'white' : '#0c1727',
           }}
         >
-          Contact Us
+          Login
         </button>
       </div>
     </div>
