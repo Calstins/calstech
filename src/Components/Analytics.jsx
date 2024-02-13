@@ -1,13 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../Styles/analytics.scss';
 import { analytics } from '../Data/data';
 import OnePhone from '../Images/onephone.png';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 const Analytics = () => {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start('visible');
+    } else {
+      control.start('hidden');
+    }
+  }, [control, inView]);
+
+  const list = {
+    visible: {
+      opacity: 1,
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+  const item1 = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring',
+        stifness: 300,
+        damping: 24,
+        delay: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: -100,
+    },
+  };
+  const item2 = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: 'spring',
+        stifness: 300,
+        damping: 24,
+        delay: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: 100,
+    },
+  };
+
   return (
     <div className="app__analytics">
-      <div className="analytics__container">
-        <div className="left__analytics">
+      <motion.div
+        ref={ref}
+        animate={control}
+        variants={list}
+        className="analytics__container"
+      >
+        <motion.div variants={item1} className="left__analytics">
           <div className="left__text">
             <h1>Okay, Let's see the analytics</h1>
             <p>
@@ -25,11 +84,11 @@ const Analytics = () => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="right_analytics">
+        </motion.div>
+        <motion.div variants={item2} className="right_analytics">
           <img src={OnePhone} alt="one phone" draggable={false} />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
